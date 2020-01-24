@@ -1,0 +1,62 @@
+<div class="all-weighting-comforts">
+  <h2 class="title-section">{{ section.settings.title }}</h2>
+  <div class="wrapp_has_weighting">
+    {% for block in section.blocks %}
+    <div class="item-has-weighting item-{{ forloop.index }}">
+      <div class="wrapp-img">
+        <img 
+				class="item-img lazyload" 
+				src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" 
+				data-src="{{ block.settings.image | img_url: '400x' }}" 
+				/>
+      </div>
+      <p> {{ block.settings.title_item }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="btn_end">
+    <a class="a-links" href="{{ section.settings.btn_url }}">View The Blankets</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "All Weighting Comforts...",
+  "class": "index-section index-custom-all-weighting",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+     {
+          "type": "text",
+          "id": "btn_url",
+          "label": "Button - URL"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+       {
+          "type": "text",
+          "id": "title_item",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "All Weighting Comforts...",
+    "category": "Custom"
+  }]
+}
+{% endschema %}

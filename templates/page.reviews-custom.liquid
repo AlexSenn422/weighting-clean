@@ -1,0 +1,333 @@
+{% include 'shogun-products', content: page %}
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="wrapp-content-review">
+  <div class="container">
+    <div class="review-header"> 
+      <h1>
+        What Our Customers Say
+      </h1>
+      <p>Weighted blankets are changing lives across the world. Hear it firsthand from our customers.</p>
+      <a href="#customer-reviews" class="action_button"> Customer Reviews <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'arrow-btn.png' | asset_url }}" alt/></a>
+    </div>
+  </div>
+  <div class="feature-img-reviews">
+    <div class="item-review item1">
+      <div class="wrapp-img-review">
+        <span class="wrapper-img">
+          <span class="wrapper-img-chill">
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'reviews1.jpg' | asset_url }}" alt/>
+          </span></span>
+      </div>
+    </div>
+    <div class="item-review item2">
+      <div class="wrapp-img-review">
+        <span class="wrapper-img">
+          <span class="wrapper-img-chill">
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'reviews2.jpg' | asset_url }}" alt/>
+          </span></span>
+      </div>
+    </div>
+    <div class="item-review item3">
+      <div class="wrapp-img-review">
+        <span class="wrapper-img">
+          <span class="wrapper-img-chill">
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'reviews3.jpg' | asset_url }}" alt/>
+          </span></span>
+      </div>
+    </div>
+    <div class="item-review item4">
+      <div class="wrapp-img-review">
+        <span class="wrapper-img">
+          <span class="wrapper-img-chill">
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'reviews4.jpg' | asset_url }}" alt/>
+          </span></span>
+      </div>
+    </div>
+  </div>
+  <div id="customer-reviews" class="all-content-review">
+    <div class="container">
+      {% include 'page-multi-column', content: page.content %}
+    </div>
+  </div>
+</div>
+<div class="botom-reviews-block">
+  <div class="two-block-bottom">
+    <div class="block-item">
+      <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-2.jpeg' | asset_url }}" alt/>
+      <div class="caption-block">
+        <h5>NEW EDITION</h5>
+        <h4>Charcoal Flannel Weighted Blanket</h4>
+        <p>Perfect if you’re new to weighted blankets</p>
+        <a class="btn-left" href="https://www.weightingcomforts.com/collections/flannel">View Blanket</a>
+      </div>
+    </div>
+    <div class="block-item">
+      <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-1.jpeg' | asset_url }}" alt/>
+      <div class="caption-block">
+        <h5>BEST SELLER</h5>
+        <h4>COOLMAX® Weighted Blankets</h4>
+        <p>Stay cool during the hot summer nights</p>
+        <a class="btn-left" href="https://www.weightingcomforts.com/collections/coolmax">View Blanket</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #customer-reviews{
+    outline: none;
+  }
+  .all-content-review #yotpo-testimonials-custom-tab{
+    display: block;
+    padding: 0 20px;
+  }
+  .botom-reviews-block{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px;
+  }
+  .wrapp-content-review{
+    margin-bottom: 25px;
+  }
+  .review-header{
+  }
+  .review-header h1{
+    color: #3b3b3b;
+    padding-top: 0;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    padding: 0;
+    font-size: 36px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+  .review-header p{
+    color: #999999;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .review-header a{
+    display: block;
+    margin: 40px auto;
+    max-width: 300px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: 18px;
+    height: auto;
+    min-height: auto;
+    max-height: initial;
+    padding: 16px 20px;
+  }
+  .review-header a img{
+    display: inline-block;
+    max-width: 30px;
+    margin-left: 5px;
+  }
+  .feature-img-reviews{
+    max-width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%;
+    text-align: center;
+    -webkit-align-items: flex-end; /* Safari 7.0+ */
+    align-items: flex-end;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+  .feature-img-reviews .item-review{
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    position: relative;
+  }
+  .feature-img-reviews .item-review .wrapp-img-review{
+    display:block;
+  }
+  .feature-img-reviews .item-review.item1{
+    padding-right: 5px;
+  }
+  .feature-img-reviews .item-review.item3,
+  .feature-img-reviews .item-review.item2{
+    padding: 0 5px;
+  }
+  .feature-img-reviews .item-review.item3{
+  }
+  .feature-img-reviews .item-review.item4{
+    padding-left: 5px;
+  }
+  .feature-img-reviews .wrapper-img{
+    display: block;
+    height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    padding-bottom: 100%;
+    position: relative;
+  }
+  .feature-img-reviews .item-review.item1 .wrapper-img,
+  .feature-img-reviews .item-review.item3 .wrapper-img{
+   /* padding-bottom: 74%;*/
+  }
+  .feature-img-reviews .item-review.item2 .wrapper-img,
+  .feature-img-reviews .item-review.item4 .wrapper-img{
+  }
+  .feature-img-reviews .wrapper-img .wrapper-img-chill{
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .feature-img-reviews .wrapper-img img{
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  #yotpo-testimonials-custom-tab .yotpo-review .yotpo-main .content-review {
+    color: #6B6D76;
+    color: #707070;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+  }
+  #yotpo-testimonials-custom-tab .yotpo-main .product-link {
+    display: block;
+    color: #1faba3;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+  }
+  .yotpo .yotpo-review .yotpo-header .yotpo-header-element .y-label.yotpo-user-title,
+  .yotpo .yotpo-review .yotpo-header .yotpo-header-element .y-label.yotpo-user-name{
+    font-family: 'Roboto', sans-serif;
+  }
+  @media screen and (max-width: 991px){
+    .review-header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      margin-top: 0px;
+    }
+
+  }
+  @media screen and (max-width: 798px){
+    .review-header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      margin-top: 0px;
+    }
+    .review-header a {
+      margin: 30px auto 11px;
+    }
+    .botom-reviews-block .two-block-bottom{
+      padding:0 20px;
+    }
+  }
+  @media screen and (max-width: 639px){
+    .all-content-review #yotpo-testimonials-custom-tab {
+      padding: 0;
+    }
+  }
+  @media screen and (max-width: 479px){
+    .feature-img-reviews .item-review {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 50%;
+      max-width: 50%;
+      position: relative;
+    }
+    .feature-img-reviews .item-review.item1 .wrapper-img, .feature-img-reviews .item-review.item3 .wrapper-img {
+      padding-bottom: 100%;
+    }
+    .feature-img-reviews .item-review.item1{
+      padding-bottom: 10px;
+    }
+    .feature-img-reviews .item-review.item3{
+      padding-left: 0;
+    }
+    .feature-img-reviews .item-review.item2{
+      padding-bottom: 10px;
+      padding-right: 0;
+    }
+    .review-header h1 {
+      font-size: 24px;
+    }
+    .review-header p {
+      font-size: 15px;
+    }
+    .review-header {
+      padding: 0 10px;
+    }
+
+
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    // Select all links with hashes
+    $('a.action_button[href*="#"]')
+    // Remove links that don't actually link to anything
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function(event) {
+      // On-page links
+      if (
+        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+        && 
+        location.hostname == this.hostname
+      ) {
+        // Figure out element to scroll to
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        // Does a scroll target exist?
+        if (target.length) {
+          // Only prevent default if animation is actually gonna happen
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, function() {
+            // Callback after animation
+            // Must change focus!
+            var $target = $(target);
+            $target.focus();
+            if ($target.is(":focus")) { // Checking if the target was focused
+              return false;
+            } else {
+              $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+              $target.focus(); // Set focus again
+            };
+          });
+        }
+      }
+    });
+  });
+</script>
+

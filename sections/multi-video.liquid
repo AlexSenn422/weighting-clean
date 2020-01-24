@@ -1,0 +1,84 @@
+{% comment %}
+** Content - homepage partial **
+- Draggable section
+{% endcomment %}
+
+<div class="homepage_content featured_content clearfix">
+    <div class="container">
+      <div class="sixteen columns">
+        <div class="section clearfix page_video">
+            {% for block in section.blocks %}
+                {% if section.blocks.size == 2 %}
+                {%- assign column_width = 'eight columns alpha' -%}
+                {% elsif section.blocks.size == 3 %}
+                {%- assign column_width = 'one-third column alpha' -%}
+                {% elsif section.blocks.size == 4 %}
+                {%- assign column_width = 'four columns alpha' -%}
+                {% else %}
+                {%- assign column_width = 'eight columns' -%}
+                {% endif %}
+                <div class="{{column_width}}" style="text-align: center;">
+                    <div style="position: relative;">
+                        {{ block.settings.video }}
+                        <img class="video-arrow" src="{{ 'Arrow-Text_Overlay.png' | asset_img_url}}"/>
+                    </div>
+                    {% if block.settings.name != blank %}
+                    <h2 style="margin-bottom: 0; color: #1c3456;">{{ block.settings.name }}</h2>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                    <h4 style="margin: 0; color: #1c3456;">{{ block.settings.title }}</h4>
+                    {% endif %}
+                    {% if block.settings.substring != blank %}
+                    <p style=" color: #1c3456;">&lsquo;{{ block.settings.substring }}&rsquo;</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  
+  {
+    "name": "Page",
+    "class": "page-section",
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Column",
+       
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "video",
+            "label": "Embed Code"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Customer Name"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "substring",
+            "label": "SubString"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Multi-Video",
+      "category": "Text",
+      "settings": {
+      }
+    }]
+  }
+  {% endschema %}
+  

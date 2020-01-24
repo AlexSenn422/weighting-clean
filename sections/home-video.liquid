@@ -1,0 +1,72 @@
+<div class="custom-video">
+  <div class="wrapp_video container">
+    <div class="img-left item-video">
+      {{section.settings.embed-video}}
+      <img class="video-arrow" src="{{ 'Arrow-Text_Overlay.png' | asset_img_url: '200x' }}"/>
+    </div>
+    <div class="container-video  item-video">
+      <div class="caption-video text_contr_v">
+        <h3 class="title-section v_home_t">{{ section.settings.section_title | escape }}</h3>
+        <p class="vide_text">{{ section.settings.section_subtitle | escape }}</p>
+<!--         <a href="JavaScript:void(0);" id="play-video">
+          <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="https://cdn.shopify.com/s/files/1/0797/4383/files/icon-pl-home.png?2164">Play Video(1<span class="a-m">m</span>2<span class="a-8">8</span><span class="a-m">s</span>)
+        </a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-video .wrapp_video .caption-video h3.title-section{
+    color: {{section.settings.heading_color}};
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Home Video",
+    "class": "index-section index-custom-video",
+    "settings": [
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Heading"
+    },
+	{
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#04b5ad"
+    },
+   {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg_link",
+      "label": "Bg image"
+    },
+    {
+      "type": "textarea",
+      "id": "embed-video",
+      "label": "Embed Video"
+    }
+    ],
+	"presets": [
+      {
+        "name": "Home Video",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .image-link img{
+    width: 100%;
+    margin-top: -15px;
+  }
+  
+</style>

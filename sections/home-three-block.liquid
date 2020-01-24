@@ -1,0 +1,77 @@
+<div class="has-proven">
+      <div class="wrapp_has_proven">
+      {% for block in section.blocks %}
+      <div class="item-has-proven item-{{ forloop.index }}">
+        <div class="each-item">
+        <img 
+				class="item-img lazyload" 
+				src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" 
+				data-src="{{ block.settings.image | img_url: '450x' }}" 
+				/>
+        <div class="caption-has-proven">
+          
+          <p>{{ block.settings.text }}</p>
+          <div class="btn_end">
+       <a class="a-links" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text }}</a>
+    </div>
+        </div>
+<!--         <div class="color-item"></div> -->
+      </div>
+      </div>
+      
+      {% endfor %}
+    </div>
+    
+</div>
+
+{% schema %}
+{
+  "name": "Three Block",
+  "class": "index-section index-custom-three",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+       {
+          "type": "text",
+          "id": "title_item",
+          "label": "Title"
+        },
+       {
+          "type": "textarea",
+          "id": "text",
+          "label": "Content"
+        },
+     {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button - URL"
+        },
+     {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button - Text"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Three Block",
+    "category": "Custom"
+  }]
+}
+{% endschema %}

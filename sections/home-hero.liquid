@@ -1,0 +1,101 @@
+<div class="custom-hero">
+  <div class="wrapp_hero">
+	{%- assign load_img = section.settings.image_bg_link -%}
+
+	<img
+		src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+		class="main-img lazyload"
+		sizes="100vw"
+		data-srcset="{{ load_img | img_url: '2048x' }} 2048w,
+							{{ load_img | img_url: '1600x' }} 1600w,
+							{{ load_img | img_url: '1200x' }} 1200w,
+							{{ load_img | img_url: '1000x' }} 1000w,
+							{{ load_img | img_url: '800x' }} 800w,
+							{{ load_img | img_url: '600x' }} 600w,
+							{{ load_img | img_url: '400x' }} 400w"
+	/>
+
+
+    {% comment %} <img 
+		class="main-img lazyload" 
+		src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" 
+		data-src="{{ section.settings.image_bg_link | img_url: '' }}" 
+		/> {% endcomment %}
+    <div class="container-hero">
+      <div class="caption-hero">
+        <h3 class="title-section">{{ section.settings.section_title | escape }}</h3>
+        <p>{{ section.settings.section_subtitle | escape }}</p>
+        <div class="btn-group">
+          <a class="a-links" href="{{ section.settings.read_more_url }}">View The Blankets</a>
+          <a class="a-story" href="/pages/about-us">Our Story</a>
+        </div>
+        <h5 class="as-featured-on">As Featured On</h5>
+        <img id="desk-as-featured" class="logo-press lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'as-on.png' | asset_url }}">
+        <img id="mobile-as-featured" class="logo-press lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'as-feature-in_DarkBlue.png' | asset_url }}">
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+   .custom-hero .caption-hero h3.title-section{
+     color: {{section.settings.heading_color}};
+   }
+  .custom-hero .caption-hero h3.title-section{
+     font-family: {{section.settings.heading_font}};
+   }
+</style>
+
+{% schema %}
+  {
+    "name": "Home Hero",
+    "class": "index-section index-custom-hero",
+    "settings": [
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Heading"
+    },
+     {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#04b5ad"
+	},
+	{
+       "type":    "font_picker",
+       "label":   "Heading Font",
+       "id":      "heading_font",
+	   "default": "playfair_display_n4"
+	},
+      	
+   {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Sub Heading"
+    },
+   {
+      "type": "text",
+      "id": "read_more_url",
+      "label": "Url - View The Blankets"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg_link",
+      "label": "Bg image"
+    }
+    ],
+	"presets": [
+      {
+        "name": "Home Hero",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .image-link img{
+    width: 100%;
+    margin-top: -15px;
+  }
+</style>

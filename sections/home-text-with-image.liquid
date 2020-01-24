@@ -1,0 +1,52 @@
+<div class="custom-text-with-image">
+  <div class="container-caption">
+    <div class="caption-text-with-image">
+      <h3 class="title-section">{{ section.settings.section_title | escape }}</h3>
+      <div class="content-text">{{ section.settings.section_subtitle }}</div>
+      <a class="a-links" href="{{ section.settings.read_more_url }}">This Is Our Story</a>
+      <img class="logo-press lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'as-on.png' | asset_url }}">
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Home Image with text",
+    "class": "index-section index-custom-img-text",
+    "settings": [
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Heading"
+    },
+   {
+      "type": "richtext",
+      "id": "section_subtitle",
+      "label": "Content"
+    },
+   {
+      "type": "text",
+      "id": "read_more_url",
+      "label": "Url - Button"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg_link",
+      "label": "Bg image"
+    }
+    ],
+	"presets": [
+      {
+        "name": "Home Image with text",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .image-link img{
+    width: 100%;
+    margin-top: -15px;
+  }
+</style>

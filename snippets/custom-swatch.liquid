@@ -1,0 +1,28 @@
+
+{% for t in product.tags %}
+{% if t contains 'hide-swatch' %}     
+{% assign hideswatch = true %}
+{% else %}
+{% assign hideswatch = false %} 
+{% endif %}
+{% endfor %}
+
+<div class="size-swatches {% if hideswatch %}mobHide{% endif %}">
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% for option in product.options_with_values %}
+  {% assign optpos = 'option' | append : option.position %}
+  <ul class="swatch-ul swatch-{{ option.name}}" data-opt="{{optpos}}">
+    <div class="optionName"> {{ option.name}} : </div>
+    {% assign valuename =  option.name %}
+    {% for value in option.values %}
+    {% assign variant_label_state = true %}
+    {% if product.options.size == 1 %}
+    {% unless product.variants[forloop.index0].available  %}
+    {% assign variant_label_state = false %}
+    {% endunless %}
+    {% endif %} 
+    <li class="{% unless variant_label_state %}sold {% else %}available {% endunless %}{% if current_variant[optpos] == value %}selected{% endif %}" {% if valuename == 'Color' %} style="background-color:{{value | handleize}};background-image:'url({{ value | handleize | append:'.png' | asset_url }})' " {% endif %} data-value="{{value | escape}}" data-price="{{variant.id}}">{{ value }}</li>
+    {% endfor %}
+  </ul>
+  {% endfor%}
+</div>

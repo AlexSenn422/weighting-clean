@@ -1,0 +1,43 @@
+<script>
+var fb_product_qty = 1;
+
+function buynow_checkout(variant_id,qty){
+  window.location.href = "{{shop.url}}/cart/"+variant_id+":"+qty;
+}
+
+document.addEventListener("StartScriptsLoaded", function(event) {
+  $(".promo_banner-close").click(function(){
+    $('.promo_banner').hide();
+  });
+  
+  $(".product-minus").click(function(){
+    var price = $('.price-handle').attr('content');
+    var price_compare = $('.price-handle').attr('content-compare');
+    var price_current = $('.price-handle .current_price .money').text().replace('$','');
+    var price_compare_current = $('.price-handle .was_price .money').text().replace('$','');
+    console.log(price);
+    console.log(price_compare);
+    console.log(price_current);
+    console.log(price_compare_current);
+  });
+  
+  $(".product-plus").click(function(){
+    var price = $('.price-handle').attr('content');
+    var price_compare = $('.price-handle').attr('content-compare');
+    var price_current = $('.price-handle .current_price .money').text().replace('$','');
+    var price_compare_current = $('.price-handle .was_price .money').text().replace('$','');
+    console.log(price);
+    console.log(price_compare);
+    console.log(price_current);
+    console.log(price_compare_current);
+  });
+  $('#quantity').on('change', function(){
+     fb_product_qty = $(this).val();
+	 for(var ij = 0; ij<dataLayer.length; ij++){
+      if(dataLayer[ij].cart_qty){
+        dataLayer[ij].cart_qty =  $(this).val();
+      }
+    }
+  });
+});
+</script>

@@ -1,0 +1,52 @@
+<div class="info-meta">
+ 
+    <div class="yotpo bottomLine" style="display:inline-block"
+         data-product-id="{{ product.id }}">
+    </div>
+  
+  {% if settings.enable_shopify_collection_badges and settings.enable_shopify_review_comments %}
+  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+
+  {% endif %}
+  {% if settings.display_vendor %}
+  <span itemprop="brand" class="brand">{{ product.vendor }}</span>
+  {% endif %}
+
+  {% if collection_handles contains 'coming-soon' %}
+  <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+  <span class="current_price">
+  <span class="price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
+    {% if product.available %}
+    {% if product.price_varies and product.price_min > 0 %}
+    {% assign variantmoney = "" %}
+    {% assign variantwasprice = "" %}
+    {% for variant in product.variants %}
+    {% if variant.available %}
+    {% if variantmoney == "" %}
+    {% assign variantmoney = variant.price %}
+    {% if variant.price < variant.compare_at_price %} 
+    {% assign variantwasprice = variant.compare_at_price %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <small><em>{{ 'products.general.from' | t }}</em></small>
+    {% endif %}
+    {% if product.price_min > 0 %}
+    <span class="money">{{ variantmoney | money }}</span>
+    {% else %}
+    {{ settings.free_price_text }}
+    {% endif %}
+    {% else %}
+    <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+    {% endif %}
+    {% if product.compare_at_price_max > product.price %}
+    <span class="was_price">
+      <span class="money compare">{{ variantwasprice | money }}</span>
+    </span>
+    {% endif %}
+  </span>
+  </span>
+  {% endif %}
+</div>

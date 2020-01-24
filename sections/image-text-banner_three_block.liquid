@@ -1,0 +1,491 @@
+{% comment %}
+** Image with text overlay - homepage partial **
+- Draggable section
+{% endcomment %}
+
+<section id="banner-{{section.id}}" class="banner" style="background: #1c3456 url('{{ section.settings.image | img_url: 'master' }}') no-repeat; background-size: cover; height: auto;  width: 100%;">
+  {% if section.settings.enable_overlay != blank %}
+  <div class="overlay_img"></div>
+  {% endif %}
+  
+  <div class="container_banner_o">
+    <div class="container" style="padding: 0;" >
+      {% if section.settings.title_2 != blank %}
+      <div class="sixteen columns">
+        <h2 class="title center title_o" style="margin: 0;">{{ section.settings.title_2 | escape }}</h2>
+
+      </div>
+      {% endif %}
+      {% if section.settings.text_2 != blank %}
+      <div class="text_banner_o">
+        {{ section.settings.text_2 }}
+      </div>
+      {% endif %}
+
+    </div>
+  
+  
+    <div class="position-{{ section.settings.text_position }} js-caption caption_banner_o">
+      <div class="">
+       
+        
+        
+  <div class="container">
+
+<section class="featured-link--section_o featured-link--image ">
+            <div class="featured-link--half_o">
+              
+                <a {% if section.settings.link != blank %}href="{{ bsectionlock.settings.link }}"{% endif %} title="{{ section.settings.title }}">
+                  {% if section.settings.image2 %}
+                    <img  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          alt="{% if section.settings.image2.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ section.settings.title | escape }}{% endif %}"
+                          class="lazyload full-width-image {{ settings.image_loading_style }}"
+                          style="border-radius: 20px;"
+                          data-sizes="auto"
+                          data-src="{{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '1600x' }}"
+                          data-srcset=" {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '400x' }} 400w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '500x' }} 500w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '600x' }} 600w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '700x' }} 700w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '800x' }} 800w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '900x' }} 900w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '1200x' }} 1200w,
+                                        {{ 'WeightedBlanketCoverUp.gif' | asset_img_url: '1600x' }} 1600w"
+                        />
+                  
+                   
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                  
+                </a>
+              
+            </div>
+            
+            <div class="featured-link--half_o featured_half_bg">
+              <div class="info middle_center middle_w">
+              <div class="icon_banner_img">
+                
+                {% if section.settings.image_icon1 %}
+                    <img  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          alt="{% if section.settings.image_icon1.alt != blank %}{{ section.settings.image_icon1.alt | escape }}{% else %}{{ section.settings.title | escape }}{% endif %}"
+                          class="lazyload full-width-image {{ settings.image_loading_style }}"
+                          data-sizes="auto"
+                          data-src="{{ section.settings.image_icon1 | img_url: '1600x' }}"
+                          data-srcset=" {{ section.settings.image_icon1 | img_url: '400x' }} 400w,
+                                        {{ section.settings.image_icon1 | img_url: '500x' }} 500w,
+                                        {{ section.settings.image_icon1 | img_url: '600x' }} 600w,
+                                        {{ section.settings.image_icon1 | img_url: '700x' }} 700w,
+                                        {{ section.settings.image_icon1 | img_url: '800x' }} 800w,
+                                        {{ section.settings.image_icon1 | img_url: '900x' }} 900w,
+                                        {{ section.settings.image_icon1 | img_url: '1200x' }} 1200w,
+                                        {{ section.settings.image_icon1 | img_url: '1600x' }} 1600w"
+                        />
+                  
+                   
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                
+                
+                {% if section.settings.title != blank %}
+                <h2 class="collection_title banner_heading_o">
+                  {{ section.settings.title }}
+                </h2>
+                {% endif %}
+                
+                {% if section.settings.text != blank %}
+                  <div class="custom-quo" style="color:white;">{{ section.settings.text }}</div>
+                {% endif %}
+                
+              </div>
+              
+              <div class="icon_banner_img">
+                
+                
+                {% if section.settings.image_icon2 %}
+                    <img  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          alt="{% if section.settings.image_icon2.alt != blank %}{{ section.settings.image_icon2.alt | escape }}{% else %}{{ section.settings.title | escape }}{% endif %}"
+                          class="lazyload full-width-image {{ settings.image_loading_style }}"
+                          data-sizes="auto"
+                          data-src="{{ section.settings.image_icon2 | img_url: '1600x' }}"
+                          data-srcset=" {{ section.settings.image_icon2 | img_url: '400x' }} 400w,
+                                        {{ section.settings.image_icon2 | img_url: '500x' }} 500w,
+                                        {{ section.settings.image_icon2 | img_url: '600x' }} 600w,
+                                        {{ section.settings.image_icon2 | img_url: '700x' }} 700w,
+                                        {{ section.settings.image_icon2 | img_url: '800x' }} 800w,
+                                        {{ section.settings.image_icon2 | img_url: '900x' }} 900w,
+                                        {{ section.settings.image_icon2 | img_url: '1200x' }} 1200w,
+                                        {{ section.settings.image_icon2 | img_url: '1600x' }} 1600w"
+                        />
+                  
+                   
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                
+                
+                {% if section.settings.title_icon2 != blank %}
+                <h2 class="collection_title banner_heading_o">
+                  {{ section.settings.title_icon2 }}
+                </h2>
+                {% endif %}
+                
+                {% if section.settings.text_icon2 != blank %}
+                  <div class="custom-quo" style="color:white;">{{ section.settings.text_icon2 }}</div>
+                {% endif %}
+               
+              </div>
+              
+              
+              
+              <div class="icon_banner_img">
+                
+                
+                {% if section.settings.image_icon3 %}
+                    <img  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          alt="{% if section.settings.image_icon3.alt != blank %}{{ section.settings.image_icon3.alt | escape }}{% else %}{{ section.settings.title | escape }}{% endif %}"
+                          class="lazyload full-width-image {{ settings.image_loading_style }}"
+                          data-sizes="auto"
+                          data-src="{{ section.settings.image_icon3 | img_url: '1600x' }}"
+                          data-srcset=" {{ section.settings.image_icon3 | img_url: '400x' }} 400w,
+                                        {{ section.settings.image_icon3 | img_url: '500x' }} 500w,
+                                        {{ section.settings.image_icon3 | img_url: '600x' }} 600w,
+                                        {{ section.settings.image_icon3 | img_url: '700x' }} 700w,
+                                        {{ section.settings.image_icon3 | img_url: '800x' }} 800w,
+                                        {{ section.settings.image_icon3 | img_url: '900x' }} 900w,
+                                        {{ section.settings.image_icon3 | img_url: '1200x' }} 1200w,
+                                        {{ section.settings.image_icon3 | img_url: '1600x' }} 1600w"
+                        />
+                  
+                   
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                
+                
+                {% if section.settings.title_icon3 != blank %}
+                <h2 class="collection_title banner_heading_o">
+                  {{ section.settings.title_icon3 }}
+                </h2>
+                {% endif %}
+                
+                {% if section.settings.text_icon3 != blank %}
+                  <div class="custom-quo" style="color:white;">{{ section.settings.text_icon3 }}</div>
+                {% endif %}
+               
+              </div>
+              </div>
+              
+              
+            </div>
+          </section>
+       
+    
+
+  </div>
+
+
+<style>
+  .middle_w{width:100%; text-align:center;}
+  .icon_banner_img{}
+  .icon_banner_img img{width:80px !important; margin:auto;}
+  .featured_half_bg{background:transparent !important;}
+  .overlay_img{background:rgb(31, 51, 91, .6); height:100%; width:100%; position: absolute;}
+  .description_banner p{color:white; font-size:20px;}
+  .banner_heading_o{color:white !important; display:block !important;}
+.container_banner_o{ padding: 95px 0 !important;}
+  .featured-link--section_o{display:flex;}
+  .featured-link--half_o{ width: 50%; padding: 0 15px; position: relative; }
+  .middle_center{position: absolute; top: 50%; transform: translate(-0%,-50%); left: 5%;}
+  .banner_btn_o{border-radius: 50px !important; background: white !important; color: #1c3456 !important;    padding: 18px 31px !important;
+    height: auto !important;
+    font-size: 20px !important;
+    margin-top: 25px;}
+  .title_o{color:white !important;}
+  .text_banner_o p{color:white !important; text-align:center;     max-width: 800px;
+    margin: auto;     font-size: 20px;}
+ 
+  
+  
+  
+   
+   @media only screen and (max-width: 960px) {
+/*    .featured-link--section_o {display: block !important;}
+  .featured-link--half_o{ width: 100%; padding: 0 15px; position: relative; }
+   .caption_banner_o { position: relative !important;   } */
+     .banner_btn_o {
+    border-radius: 50px !important;
+    background: white !important;
+    color: #1c3456 !important;
+    padding: 13px 23px !important;
+    height: auto !important;
+    font-size: 14px !important;
+    margin-top: 15px;
+}
+     .middle_center{ left: 0%;}
+   }
+  
+  @media only screen and (max-width: 767px) {
+  .featured_half_bg{width: 100% !important !important;}
+  }
+  
+  
+  
+ @media only screen and (max-width: 600px) {
+       .container_banner_o{ padding: 60px 0 !important;}
+.featured-link--section_o {display: block !important;}
+  .featured-link--half_o{ width: 100%; padding: 0 15px; position: relative; }
+   .caption_banner_o { position: relative !important;     top: 0 !important;
+    -webkit-transform: translate(0, -0%) !important;
+    -ms-transform: translate(0, -0%) !important;
+    transform: translate(0, 0%) !important;  } 
+       .middle_center {
+    position: relative;
+    top: 0;
+    transform: translate(-0%,-0%);
+    margin-top: 25px;
+}
+     }
+  
+  
+  {% if section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '1' %}
+    .featured-link--section {
+      margin-bottom: 3%;
+    }
+  
+ 
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--half {
+      width: 45%;
+    }
+    .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+/*         margin-left: 3%; */
+      {% else %}
+        margin-left: 0%;
+/*         margin-right: 3%; */
+      {% endif %}
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+        margin-left: 0%;
+        margin-right: 3%;
+      {% else %}
+        margin-left: 3%;
+        margin-right: 0%;
+      {% endif %}
+    }
+  {% elsif section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '2' %}
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--margin {
+      margin-right: 0%;
+      margin-left: 0%;
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+  {% endif %}
+</style>
+        
+        
+      </div>
+    </div>
+    
+    <div class="container" style="padding: 0; text-align:center;" >
+      {% if section.settings.text_3 != blank %}
+      <div class="sixteen columns">
+
+
+        <div class="text_banner_o">{{ section.settings.text_3 }}</div>
+
+      </div>
+      {% endif %}
+     {% if section.settings.button_label2 != blank  %}
+          <a href="{{ section.settings.button_link }}" class="action_button continue-button btn_clm banner_btn_o">
+            {{ section.settings.button_label2 | escape }}
+          </a>
+        {% endif %}
+
+    </div>
+    
+    
+  </div>
+</section>
+<script>
+  $(".custom-quo p").each(function(){
+    console.log($(this).text());
+    $(this).html("&ldquo;" + $(this).text() + "&rdquo;");
+  });
+</script>
+{% schema %}
+
+{
+  "name": "banner Three icon",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "1800 x 1000px recommended"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_overlay",
+            "label": "Show overlay",
+            "default": true
+          },
+			{
+            "type": "text",
+            "id": "title_2",
+            "label": "Heading",
+
+          "default": "Promotion description appears here."
+          },
+			{
+            "type": "richtext",
+            "id": "text_2",
+            "label": "Heading",
+			"default": "<p>Promotion description appears here.</p>"
+          },
+
+			{
+            "type": "richtext",
+            "id": "text_3",
+            "label": "Heading",
+			"default": "<p>Promotion description appears here.</p>"
+          },
+			 {
+            "type": "text",
+            "id": "button_label2",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+    
+
+      
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image"
+        },
+
+
+        {
+          "type": "header",
+          "content": "Icon 1"
+        },
+	
+		{
+          "type": "image_picker",
+          "id": "image_icon1",
+          "label": "Image Icon1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Promotion description appears here.</p>"
+        },
+
+
+
+
+		{
+          "type": "header",
+          "content": "Icon 2"
+        },
+	
+		{
+          "type": "image_picker",
+          "id": "image_icon2",
+          "label": "Image Icon1"
+        },
+        {
+          "type": "text",
+          "id": "title_icon2",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text_icon2",
+          "label": "Text",
+          "default": "<p>Promotion description appears here.</p>"
+        },
+
+
+
+		{
+          "type": "header",
+          "content": "Icon 3"
+        },
+	
+		{
+          "type": "image_picker",
+          "id": "image_icon3",
+          "label": "Image Icon"
+        },
+        {
+          "type": "text",
+          "id": "title_icon3",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text_icon3",
+          "label": "Text",
+          "default": "<p>Promotion description appears here.</p>"
+        },
+
+
+
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        }
+      
+  ],
+  "presets": [
+{
+      "name": "banner Three icon",
+      "category": "Image",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

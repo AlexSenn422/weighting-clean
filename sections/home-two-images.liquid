@@ -1,0 +1,41 @@
+<div class="two-block-bottom">
+  <div class="block-item">
+    <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-2.jpeg' | asset_url }}" alt/>
+    <div class="caption-block">
+      <h5>NEW EDITION</h5>
+      <h4>Charcoal Weighted Blanket</h4>
+      <p>Perfect if you’re new to weighted blankets</p>
+      <a class="btn-left" href="/collections/flannel">View Blanket</a>
+    </div>
+  </div>
+  <div class="block-item">
+    <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-1.jpeg' | asset_url }}" alt/>
+    <div class="caption-block">
+      <h5>BEST SELLER</h5>
+      <h4>COOLMAX® Weighted Blankets</h4>
+      <p>Stay cool during the hot summer nights</p>
+      <a class="btn-left" href="/collections/coolmax">View Blanket</a>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Home Two Block",
+    "class": "index-section index-custom-two-block",
+    "settings": [
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Heading"
+    }
+    ],
+	"presets": [
+      {
+        "name": "Home Two Block",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

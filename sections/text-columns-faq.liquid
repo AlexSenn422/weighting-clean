@@ -1,0 +1,179 @@
+<div class="container container_clm custom-faq">
+  {% if section.settings.title != blank %}
+    <div class="sixteen columns">
+      <h2 class="title center">{{ section.settings.title | escape }}</h2>
+      <div class="feature_divider"></div>
+    </div>
+  {% endif %}
+
+  {% for block in section.blocks %}
+  {% if section.blocks.size == 1 %}
+  {%- assign column_width = 'sixteen columns' -%}
+  {% elsif section.blocks.size == 3 %}
+    {%- assign column_width = 'eight columns' -%}
+  {% elsif section.blocks.size == 4 %}
+    {%- assign column_width = 'eight columns' -%}
+  {% elsif section.blocks.size == 5 %}
+    {%- assign column_width = 'eight columns' -%}
+  {% else %}
+    {%- assign column_width = 'eight columns' -%}
+  {% endif %}
+    <div class="custom-faq-wrapper text-column" {{ block.shopify_attributes }}>
+      <div class="border-style--{{ block.settings.border_style }} text-align--{{ block.settings.align_text }}">
+        
+        {% if block.settings.title != blank %}
+          <h3 class="{{ block.settings.heading_size }}">{{ block.settings.title | escape }}</h3>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte-setting clm_img_text_faq">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+          <a href="{{ block.settings.button_link }}" class="action_button continue-button btn_clm">
+            {{ block.settings.button_label | escape }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+   {% if section.settings.more_text != blank %}
+    <div class="sixteen columns">
+     
+      <h3 class="title center" style="text-decoration: none;">{{ section.settings.more_text | escape }}</h3>
+       <div class="feature_divider"></div>
+     
+    </div>
+  {% endif %}
+</div>
+<style>
+  .custom-faq {
+    display: table;
+  }
+  .custom-faq-wrapper {
+    width: 50%;
+    display: inline-flex;
+    padding: 10px;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Text columns with FAQ",
+    "class": "text-columns-with-images-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Text columns with images"
+      },
+	{
+        "type": "text",
+        "id": "more_text",
+        "label": "More Text",
+        "default": "More"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Column",
+       
+        "settings": [
+          
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "select",
+            "id": "heading_size",
+            "label": "Heading size",
+            "options": [
+              {
+                "value": "regular_text",
+                "label": "Regular"
+              },
+              {
+                "value": "large_text",
+                "label": "Large"
+              }
+            ],
+            "default": "regular_text"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "border_style",
+            "label": "Border style",
+            "options": [
+              {
+                "value": "none",
+                "label": "None"
+              },
+              {
+                "value": "box",
+                "label": "Box"
+              },
+              {
+                "value": "quote",
+                "label": "Quote"
+              }
+            ],
+            "default": "none"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text columns with FAQ",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

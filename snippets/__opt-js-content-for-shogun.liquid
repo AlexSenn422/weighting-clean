@@ -1,0 +1,123 @@
+{%- assign shogun_page = false -%}
+{%- assign shogun_url = 'https://cdn.getshogun.com/' -%}
+
+{%- if content_for_layout contains 'data-shogun-variant-id' -%}
+		{%- assign shogun_page = true -%}
+{%- endif -%}
+
+
+{%- if shogun_page -%}
+
+	{%- capture __content_for_layout -%}
+		{{ content_for_layout }}
+	{%- endcapture -%}
+
+	{%- assign words = __content_for_layout | split: '" data-region="' -%}
+	{%- assign temp  = __content_for_layout -%}
+	{%- assign js_content_for_shogun_defer = '' -%}
+	{%- assign js_content_for_shogun_defer_css = '' -%}
+
+	{%- capture _ids -%}{% for word in words %}{% if word contains 'data-shogun-variant-id="' %}{{ word | slice: -24, 25 | strip_newlines | lstrip }},{% endif %}{% endfor %}{%- endcapture -%}
+	
+	{%- assign ids = _ids | split: ',' -%}
+
+		{% for id in ids %}
+			{%- if id != '' -%}
+				
+				{%- capture replace_css_from -%}<link rel="stylesheet" type="text/css" href="{{ shogun_url }}{{ id }}.css">{%- endcapture -%}
+				{%- capture replace_css_to -%}{%- endcapture -%}
+
+				{%- capture replace_js_from -%}<script type="text/javascript" src="{{ shogun_url }}{{ id }}.js" async></script>{%- endcapture -%}
+				{%- capture replace_js_to -%}{%- endcapture -%}		
+
+				{%- assign temp = temp | replace: replace_css_from, replace_css_to | replace: replace_js_from, replace_js_to  -%}
+
+			{%- endif -%}
+		{% endfor %}	
+
+	{%- capture js_content_for_shogun_defer_js -%}
+	<script>
+	document.addEventListener("StartShogunScripts", function(event) {	
+	{% for id in ids %}
+		{%- if id != '' -%}
+			{%- capture __url -%}{{ shogun_url }}{{ id }}.js{%- endcapture -%}
+			{%- if content_for_layout contains __url -%}
+			__loadJS('{{__url}}');
+			{%- endif -%}
+		{%- endif -%}
+	{% endfor %}
+	setTimeout(function(){ 
+		$(".lazyloadshogun").addClass('lazyload') 
+
+		loadJS('https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js');
+
+	}, 500);
+	setTimeout(function(){ $(".lazyloadshoguniframe").addClass('lazyload') }, 2500);
+	console.log('StartShogunScripts loaded');
+	});
+	</script>	
+	{%- endcapture -%}
+
+	{%- capture js_content_for_shogun_defer_css -%}
+	<script>
+	document.addEventListener("StartShogunCss", function(event) {
+	{% for id in ids %}
+		{%- if id != '' -%}
+			{%- capture __url -%}{{ shogun_url }}{{ id }}.css{%- endcapture -%}
+			{%- if content_for_layout contains __url -%}
+			__loadCSS('{{__url}}');
+			{%- endif -%}
+		{%- endif -%}
+	{% endfor %}
+	console.log('StartShogunCss loaded');
+	});
+	</script>
+	{%- endcapture -%}
+
+	{%- capture js_content_for_shogun_defer_main -%}
+	<script>
+	__loaded_urls = [];
+	function __loadCSS(url)
+	{
+		if(__isLoaded(url) == false)
+		{
+			loadCSS(url);		
+		}
+	}
+
+	function __loadJS(url)
+	{
+		if(__isLoaded(url) == false)
+		{
+			loadJS(url);		
+		}
+	}
+
+	function __isLoaded(url)
+	{
+		if(__loaded_urls.includes(url))
+		{
+			return true;
+		}
+
+		__loaded_urls.push(url);
+		return false;
+	}
+
+	</script>
+	{%- endcapture -%}	
+
+	{%- assign content_for_layout = 
+		temp 
+		| replace: 'https://fonts.googleapis.com/css?family=Roboto', ''
+		| replace: '<img src="http', '<img data-src="http'
+		| replace: 'class="shogun-image', 'class="shogun-image lazyload'
+		| replace: '<source src="', '<source data-src="'
+		| replace: '<script type="text/javascript" src="https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js" async></script>', ''
+		| replace: '<iframe class="shogun-video-embed " src="', '<iframe class="shogun-video-embed lazyloadshoguniframe" data-src="'
+		| replace: 'title="Player for " width="640" height="360" src="', 'title="Player for " width="640" height="360" class="lazyloadshoguniframe" data-src="'
+		| replace: 'https://img.youtube.com/', 'https://img.youtube.com/'
+		| replace: '/format/auto/-/preview/3000x3000/-/quality/lighter/', '/format/auto/-/preview/600x600/-/quality/lighter/' 
+	-%}	
+
+{%- endif -%}

@@ -1,0 +1,105 @@
+
+.top_bar {height: 0;}
+.hidden_d{display:none;}
+.cart_right { position: absolute; right: 72px;  top: 30px;}
+.sticky_nav--stick .cart_right {right: 72px;  top: 6px;}
+.nav a.mini_cart {height: auto !important;}
+.icon-cart:before {font-size: 25px !important;}
+.icon-search:before {font-size: 25px;}
+
+.cart_container.active_link .cart_content { width: 300px;}
+.logo-list-section .title{font-size:25px; color: #1c3456; text-decoration: underline;}
+.clm_bg_img{width:auto !important;}
+.clm_bg{background: #d7d7d7; box-shadow: 0px 10px 16px 0px #afafaf; border-radius: 10px; min-height:230px; padding: 20px; display:table;}
+.clm_bg .vertical-centered{display:table-cell;vertical-align:middle;}
+.clm_bg_text{color: #1d3260; font-size: 20px;}
+.clm_bg_text p{display:inline;}
+.main-img-video{width:100% !important;}
+.v_home_t{text-align:center !important; margin:0 auto 15px; text-decoration: underline;}
+.vide_text{color: #1d3260 !important; text-align:center !important; font-size:25px !important; }
+.text_contr_v{max-width: 500px !important; margin: auto;}
+.custom-video {background-color: #d7d7d7;  padding: 20px 0 40px;}
+.clm_img_text {color: #1d3260 !important; text-align:center !important; font-size:25px !important; }
+.container_clm{margin-top: 18px !important;}
+.btn_clm{border-radius:50px !important; min-height: 55px !important; height: 55px !important; line-height: 1.2 !important;  padding: 0 40px !important;}
+.gray_bg_clm{background-color: #d7d7d7; padding: 30px 0 0px;     margin: 25px 0 60px;}
+.container_clm h3{text-decoration: underline;}
+.featured-content-section{background: #1f335b;  color: white;  font-size: 38px;}
+.featured-content-section .featured_text p{font-size:25px;}
+.clm_bg_testimonial {background: #1f325b; border-radius: 10px; padding: 20px;}
+.clm_bg_testimonial h3{color:white !important;}
+.clm_bg_testimonial p{color:white !important;}
+.title_t{font-size:50px;}
+.featured-link--half {  background-color: #ffffff;}
+.featured_content {background-color: #ffffff;}
+.video_title{}
+.video_title h2{text-align:center; color:#1f325b; margin-bottom: 0;}
+.video_title p{text-align:center; color:#1f325b;}
+
+.clm_step{position:relative; padding:0;}
+.img_top_step{ position: absolute; top: -131px; left: 0;  right: 0;  margin: auto;  width: 100%;  padding: 0 102px;}
+.clm_text_step{padding:20px;}
+.heading_step_bg{background:#1c3456; color:white;  border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 30px 0 10px;}
+.step_tep_p{margin-top: 90px !important;}
+.clm_img_text_faq {color: #1d3260 !important; font-size:25px !important; }
+.sleep_bg{background:#1c3456; border-radius: 10px;}
+.sleep_bg h2{color: white; font-size: 30px; margin: 0;}
+.sleep_bg p{color: white; font-size: 20px;}
+.sleep_left{color:white; font-size:20px; padding: 0 40px;}
+.sleep_div{ display: flex; justify-content: center;}
+.social_icons li{background: #1c3456; border-radius: 50px; height: 50px; width: 50px;  text-align: center; line-height: 50px !important;}
+footer .social_icons a, footer .social_icons a:visited {margin-bottom: 0; color: #ffffff; font-size: 30px; margin: 3px 0 0 5px;}
+.center_f {margin-top:20px;}
+.center_f p{margin-bottom:0;}
+footer .social_icons a:active, footer .social_icons a:hover { color: #c8dfff; font-size: 30px;}
+.footer ul {text-transform: uppercase; font-weight: 600;}
+.icon_banner_img{
+  margin-bottom:35px;
+}
+.icon_banner_img img{max-width:60px}
+.icon_banner_img p{
+  font-size:22px;
+  max-width:500px;
+  margin:auto;
+}
+ @media only screen and (min-width: 799px) {
+   .footer ul {display: flex; justify-content: center;}
+   .footer ul li {margin: 0 20px;}
+   .center_f p{text-align:center;}
+   .mobile_show{display:none}
+   
+ }
+
+@media only screen and (max-width: 1200px) {
+.step_tep_p {margin-top: 0px !important;}
+  .img_top_step {top: -63px;}
+}
+
+
+@media only screen and (max-width: 959px) {
+.img_top_step {padding: 0 67px;}
+}
+
+@media only screen and (max-width: 798px) {
+footer .social_icons a, footer .social_icons a:visited {
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 20px;
+  margin: 3px 0 0 5px;}
+  
+  .img_top_step {width: 235px;}
+  .step_tep_p .one-third{margin-top:64px;}
+  .page_video .one-third{margin-top:20px;}
+}
+
+
+@media only screen and (max-width: 600px) {
+.sleep_div {display: block;}
+  .sleep_left {padding: 25px 40px 0;}
+  .custom-video .wrapp_video {
+    display: block;}
+  .custom-video .wrapp_video .item-video {
+    width: 100%;
+    position: relative;
+}
+}

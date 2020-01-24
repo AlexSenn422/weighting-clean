@@ -1,0 +1,318 @@
+{% comment %}
+** Footer - default view **
+- Static section
+- Uses blocks
+{% endcomment %}
+
+<footer class="footer">
+  <div class="container footer-menu-wrap">
+    {% for block in section.blocks %}
+    <div class="{% if forloop.length >= 5 %}sixteen columns{% elsif forloop.length == 4 %}sixteen columns{% elsif forloop.length == 3 %}sixteen columns{% elsif forloop.length == 2 %}sixteen columns{% endif %}" {{ block.shopify_attributes }}>
+      {% if block.type == 'logo' %}
+      <div class="text-align--{{block.settings.text_align}}">
+        {% if block.settings.image %}
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+             alt="{{ block.settings.image.alt | escape }}"
+             class="footer-logo lazyload {{ settings.image_loading_style }}"
+             data-sizes="25vw"
+             style="max-width: {{- block.settings.image.width -}}px"
+             data-src="{{ block.settings.image | img_url: '2048x' }}"
+             data-srcset=" {{ block.settings.image | img_url: '200x' }} 200w,
+                          {{ block.settings.image | img_url: '300x' }} 300w,
+                          {{ block.settings.image | img_url: '400x' }} 400w,
+                          {{ block.settings.image | img_url: '500x' }} 500w,
+                          {{ block.settings.image | img_url: '600x' }} 600w,
+                          {{ block.settings.image | img_url: '1000x' }} 1000w"
+             />
+        {% else %}
+        <img class="footer-logo none lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'Weighting-Logo.png' | asset_url }}" alt/> 
+        {% endif %}
+      </div>
+      
+       {% comment %}
+      <a id="bbblink" class="ruhzbum" href="https://www.bbb.org/nashville/business-reviews/blankets/weighting-comforts-in-nashville-tn-37186942#bbbseal" title="Weighting Comforts, LLC, Blankets, Nashville, TN" style="display: block;position: relative;overflow: hidden; width: 150px; height: 68px; margin: 0px; padding: 0px;"><img class="lazyload" style="padding: 0px; border: none;" id="bbblinkimg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="https://seal-nashville.bbb.org/logo/ruhzbum/weighting-comforts-37186942.png" width="300" height="68" alt="Weighting Comforts, LLC, Blankets, Nashville, TN" /></a>
+			<script type="text/javascript">
+			document.addEventListener("StartOtherLoading", function(event) {
+			var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-nashville.bbb.org' + unescape('%2Flogo%2Fweighting-comforts-37186942.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();
+			});
+			</script>
+       {% endcomment %}
+
+      {% elsif block.type == 'link_list' %}
+      <div class="footer_menu">
+        {% if block.settings.menu != blank %}
+<h6 class="mobile_show">{{ linklists[block.settings.menu].title }}<span class="right icon-down-arrow"></span></h6> 
+        <div class="toggle_content">
+          <ul>
+            {% for link in linklists[block.settings.menu].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% else %}
+        <h6>Menu title<span class="right icon-down-arrow"></span></h6>
+        <div class="toggle_content">
+          <ul>
+            <li><p>{{ 'homepage.onboarding.no_content' | t }}</p></li>
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+
+      {% elsif block.type == 'text' %}
+      <div class="footer_content">
+        {% if block.settings.title != blank %}
+        <h6>{{ block.settings.title }}<span class="right icon-down-arrow"></span></h6>
+        {% endif %}
+         {% if block.settings.content != blank %}
+        <div class="toggle_content center_f" style="font-size: 22px;">
+          {{ block.settings.content }}
+        </div>
+        {% endif %}
+      </div>
+      {% elsif block.type == 'page' %}
+      <div class="footer_content">
+        {% if block.settings.page != blank %}
+        <h6>{{ pages[block.settings.page].title }}<span class="right icon-down-arrow"></span></h6>
+        <div class="toggle_content">
+          {{ pages[block.settings.page].content }}
+        </div>
+        {% else %}
+        <h6>Page title<span class="right icon-down-arrow"></span></h6>
+        <div class="toggle_content">
+          <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      {% elsif block.type == 'html' %}
+      {% comment %}@TODO - Add HTML section for maps, widgets, embedding, etc{% endcomment %}
+
+      {% elsif block.type == 'empty' %}
+      <div class="empty-column"></div>
+
+      {% endif %}
+
+      {% assign social_media_column = section.settings.social_media_column | plus: 0  %}
+
+      {% if block.settings.social_icons_footer %}
+      {% assign social_icons = true %}
+      <div class="footer-social-icons">
+        {% include 'social-icons' %}
+      </div>
+      {% endif %}
+
+    </div>
+    {% if forloop.last and social_icons %}
+    <div class="footer-social-icons--mobile sixteen columns">
+      {% include 'social-icons' %}
+    </div>
+    <div style="padding-top:30px; clear: both;">
+    <div id="y-badges" class="yotpo badge badge-init"></div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    
+    
+    {% comment %}
+    <div class="sixteen columns row footer_credits">
+      <p class="credits">
+        &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+        {{ section.settings.copyright_text }}
+        <!--<a href="http://metacake.com" target="_blank">Designed by Metacake.</a>
+        {{ powered_by_link }}-->
+      </p>
+
+      {% if section.settings.display_payment_methods %}
+      <div class="payment_methods">
+        {% for type in shop.enabled_payment_types %}
+        <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ type | payment_type_img_url }}" alt="{{ type | replace: "_", " " | capitalize }}" />
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div><!--end footer_credits-->
+    {% endcomment %}
+  </div>
+  <!--<div class="mc-logo">
+    <a href="http://metacake.com" target="_blank">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+        <g>
+          <path fill="#a09e97" d="M448.4,278.5c-30.5,6.8-44.1,21.5-48.6,43c-4.5,21.5-29.4,22.6-39.6,0c-9-18.1-45.2-28.3-37.3,11.3
+                                  c6.8,31.6,13.6,61-9,61c-28.3,0-7.9-50.9-7.9-74.6c0-28.3-19.2-28.3-33.9-18.1c-12.4,9-7.9,19.2-32.8,19.2
+                                  c-22.6,0-29.4-31.6-54.3-38.4c-2.3,0-4.5-1.1-6.8-1.1l0,0l0,0c-53.1-9-113-27.1-127.7-57.6V413c0,28.3,76.9,74.6,139,74.6v-50.9
+                                  l31.6,55.4c27.1,3.4,56.5,4.5,85.9,4.5c29.4,0,58.8-1.1,85.9-4.5l31.6-55.4v49.7c27.1-4.5,53.1-10.2,76.9-17
+                                  c35-11.3,62.2-28.3,62.2-57.6V223.1C549,250.2,498.1,268.3,448.4,278.5z"/>
+          <path fill="#a09e97" d="M307.1,312.4"/>
+          <path fill="#a09e97" d="M12.1,470.6c0,61,132.2,109.6,295,109.6s295-49.7,295-109.6v-38.4c0,56.5-132.2,101.7-295,101.7
+                                  s-295-45.2-295-101.7V470.6z"/>
+        </g>
+      </svg>
+    </a>
+  </div>-->
+</footer>
+
+<script>
+  $('#y-badges').click(function() {
+   window.location = "/pages/weighted-blanket-reviews";
+});
+  
+</script>
+
+
+
+{% schema %}
+
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_designed_by",
+      "label": "Show theme designer credits",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_payment_methods",
+      "label": "Show payment method icons",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Logo alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "This menu won't show dropdown items"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Content page"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty column",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "social_icons_footer",
+          "label": "Show social media footer icons",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+
+{% endschema %}

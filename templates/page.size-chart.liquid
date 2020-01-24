@@ -1,0 +1,87 @@
+{% include 'shogun-products', content: page %}
+<a name="pagecontent" id="pagecontent"></a>
+
+
+<div class="size_chart_custom">
+  {% include 'page-multi-column', content: page.content %}
+</div>
+<div class="two-block-bottom">
+
+  <div class="block-item">
+    <a class="aa" href="/collections/flannel">
+      <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-2.jpeg' | asset_url }}" alt/>
+    </a>
+    <div class="caption-block">
+      <h5>NEW EDITION</h5>
+      <h4>Charcoal Weighted Blanket</h4>
+      <p>Perfect if you’re new to weighted blankets</p>
+      <a class="btn-left" href="/collections/flannel">View Blanket</a>
+    </div>
+  </div>
+  <div class="block-item">
+    <a class="aa" href="/collections/coolmax">
+      <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{ 'new-1.jpeg' | asset_url }}" alt/>
+    </a>
+    <div class="caption-block">
+      <h5>BEST SELLER</h5>
+      <h4>COOLMAX® Weighted Blankets</h4>
+      <p>Stay cool during the hot summer nights</p>
+      <a class="btn-left" href="/collections/coolmax">View Blanket</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .size_chart_custom{
+    color: #a09e97;
+  }
+  .size_chart_custom .shogun-heading-component h1{
+    display: block;
+    text-align: center;
+  }
+  .size_chart_custom .shogun-heading-component h5{
+    color: rgba(148, 140, 140, 1);
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+  @media only screen and (max-width: 639px) {
+    .size_chart_custom .table-size-chart td{
+      font-size: 14px;
+    }
+    .table-size-chart td .text-coolmax {
+      font-size: 22px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .size_chart_custom .table-size-chart td{
+      font-size: 13px;
+    }
+    .table-size-chart {
+      border-spacing: 2px;
+    }
+    .table-size-chart td .text-coolmax {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+    .table-size-chart td img {
+      max-width: 76px;
+    }
+    .size_chart_custom .shogun-heading-component h5 {
+      font-size: 14px;
+    }
+
+  }
+
+  .size_chart_custom{
+    color: #000000;
+  }
+  .size_chart_custom{
+  }
+  .size_chart_custom{
+  }
+  .size_chart_custom{
+  }
+
+</style>

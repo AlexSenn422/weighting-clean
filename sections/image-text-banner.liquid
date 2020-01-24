@@ -1,0 +1,354 @@
+{% comment %}
+** Image with text overlay - homepage partial **
+- Draggable section
+{% endcomment %}
+
+<section id="banner-{{section.id}}" class="banner" style="background: #1c3456 url('{{ section.settings.image | img_url: 'master' }}') no-repeat; background-size: cover; height: auto;  width: 100%;">
+  {% if section.settings.enable_overlay != blank %}
+  <div class="overlay_img"></div>
+  {% endif %}
+  
+  <div class="container_banner_o">
+    <div class="container" style="padding: 0;" >
+      {% if section.settings.title_2 != blank %}
+      <div class="sixteen columns">
+        <h2 class="title center title_o" style="margin: 0;">{{ section.settings.title_2 | escape }}</h2>
+
+      </div>
+      {% endif %}
+      {% if section.settings.text_2 != blank %}
+      <div class="text_banner_o">
+        {{ section.settings.text_2 }}
+      </div>
+      {% endif %}
+
+    </div>
+  
+  
+    <div class="position-{{ section.settings.text_position }} js-caption caption_banner_o">
+      <div class="">
+       
+        
+        
+  <div class="container">
+
+<section class="featured-link--section_o featured-link--image ">
+            <div class="featured-link--half_o">
+              {% if section.settings.enable_video %}
+                {{ section.settings.video_overlay }}
+              {% else %}
+                 <a {% if section.settings.link != blank %}href="{{ bsectionlock.settings.link }}"{% endif %} title="{{ section.settings.title }}">
+                  
+                  {% if section.settings.image2 %}
+                    <img  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                          alt="{% if section.settings.image2.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ section.settings.title | escape }}{% endif %}"
+                          class="lazyload full-width-image {{ settings.image_loading_style }}"
+                          data-sizes="auto"
+                          data-src="{{ section.settings.image2 | img_url: '1600x' }}"
+                          data-srcset=" {{ section.settings.image2 | img_url: '400x' }} 400w,
+                                        {{ section.settings.image2 | img_url: '500x' }} 500w,
+                                        {{ section.settings.image2 | img_url: '600x' }} 600w,
+                                        {{ section.settings.image2 | img_url: '700x' }} 700w,
+                                        {{ section.settings.image2 | img_url: '800x' }} 800w,
+                                        {{ section.settings.image2 | img_url: '900x' }} 900w,
+                                        {{ section.settings.image2 | img_url: '1200x' }} 1200w,
+                                        {{ section.settings.image2 | img_url: '1600x' }} 1600w"
+                        />
+                  
+                   
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                  
+                </a>
+              {% endif %}
+               
+              
+            </div>
+            
+            <div class="featured-link--half_o featured_half_bg">
+              <div class="info middle_center">
+                {% if section.settings.title != blank %}
+                <h2 class="collection_title banner_heading_o">
+                  {{ section.settings.title }}
+                </h2>
+                {% endif %}
+                
+                {% if section.settings.text != blank %}
+                  <div class="" style="color:white; text-align:left;">{{ section.settings.text }}</div>
+                {% endif %}
+                {% if section.settings.button_label != blank %}
+                  <a {% if section.settings.link != blank %}href="{{ section.settings.link }}"{% endif %} class="button banner_btn_o">
+                    {{ section.settings.button_label }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </section>
+       
+    
+
+  </div>
+
+
+<style>
+  
+  .featured_half_bg{background:transparent !important;}
+  .overlay_img{background:rgb(31, 51, 91, .6); height:100%; width:100%; position: absolute;}
+  .description_banner p{color:white; font-size:20px;}
+  .banner_heading_o{color:white !important; display:block !important;}
+.container_banner_o{ padding: 95px 0 !important;}
+.featured-link--section_o{display:flex;}
+.featured-link--half_o{ width: 50%; padding: 0 15px; position: relative; }
+.middle_center{position: absolute; top: 50%; transform: translate(-0%,-50%); left: 5%;}
+.banner_btn_o{border-radius: 50px !important; background: white !important; color: #1c3456 !important; padding: 18px 31px !important;
+    height: auto !important;  font-size: 20px !important;  margin-top: 25px;}
+  .title_o{color:white !important;}
+  .text_banner_o p{color:white !important; text-align:center;     max-width: 800px;
+    margin: auto;     font-size: 20px;}
+ 
+  
+  
+  
+   
+   @media only screen and (max-width: 960px) {
+/*    .featured-link--section_o {display: block !important;}
+  .featured-link--half_o{ width: 100%; padding: 0 15px; position: relative; }
+   .caption_banner_o { position: relative !important;   } */
+     .banner_btn_o {
+    border-radius: 50px !important;
+    background: white !important;
+    color: #1c3456 !important;
+    padding: 13px 23px !important;
+    height: auto !important;
+    font-size: 14px !important;
+    margin-top: 15px;
+}
+     .middle_center{ left: 0%;}
+   }
+  
+  @media only screen and (max-width: 767px) {
+  .featured_half_bg{width: 100% !important !important;}
+  }
+  
+  
+  
+ @media only screen and (max-width: 600px) {
+       .container_banner_o{ padding: 60px 0 !important;}
+.featured-link--section_o {display: block !important;}
+  .featured-link--half_o{ width: 100%; padding: 0 15px; position: relative; }
+   .caption_banner_o { position: relative !important;     top: 0 !important;
+    -webkit-transform: translate(0, -0%) !important;
+    -ms-transform: translate(0, -0%) !important;
+    transform: translate(0, 0%) !important;  } 
+       .middle_center {
+    position: relative;
+    top: 0;
+    transform: translate(-0%,-0%);
+    margin-top: 25px;
+}
+     }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  {% if section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '1' %}
+    .featured-link--section {
+      margin-bottom: 3%;
+    }
+  
+ 
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--half {
+      width: 45%;
+    }
+    .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+/*         margin-left: 3%; */
+      {% else %}
+        margin-left: 0%;
+/*         margin-right: 3%; */
+      {% endif %}
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      {% if section.settings.frontpage_image_position == 'right' %}
+        margin-left: 0%;
+        margin-right: 3%;
+      {% else %}
+        margin-left: 3%;
+        margin-right: 0%;
+      {% endif %}
+    }
+  {% elsif section.settings.frontpage_grid_style == 'standard' and section.settings.featured_links_per_row == '2' %}
+    @media only screen and (max-width: 480px) {
+      .featured-link--section {
+        margin-bottom: 10%;
+      }
+    }
+    .featured-link--margin {
+      margin-right: 0%;
+      margin-left: 0%;
+    }
+    .featured-link--section:nth-child(even) .featured-link--margin {
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+  {% endif %}
+</style>
+        
+        
+      </div>
+    </div>
+    
+    <div class="container" style="padding: 0; text-align:center;" >
+      {% if section.settings.text_3 != blank %}
+      <div class="sixteen columns">
+
+
+        <div class="text_banner_o">{{ section.settings.text_3 }}</div>
+
+      </div>
+      {% endif %}
+     {% if section.settings.button_label2 != blank  %}
+          <a href="{{ section.settings.button_link }}" class="action_button continue-button btn_clm banner_btn_o">
+            {{ section.settings.button_label2 | escape }}
+          </a>
+        {% endif %}
+
+    </div>
+    
+    
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Image with text banner",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+			
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "1800 x 1000px recommended"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_overlay",
+        "label": "Show overlay",
+        "default": true
+      },
+			{
+            "type": "text",
+            "id": "title_2",
+            "label": "Heading",
+
+          "default": "Promotion description appears here."
+          },
+			{
+            "type": "richtext",
+            "id": "text_2",
+            "label": "Heading",
+			"default": "<p>Promotion description appears here.</p>"
+          },
+
+			{
+            "type": "richtext",
+            "id": "text_3",
+            "label": "Heading",
+			      "default": "<p>Promotion description appears here.</p>"
+          },
+			 {
+            "type": "text",
+            "id": "button_label2",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_video",
+            "label": "Show Video",
+            "default": false
+          },
+          {
+            "type": "textarea",
+            "id": "video_overlay",
+            "label": "Video Embed Code"
+          },
+
+      
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Promotion description appears here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "View all"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        }
+      
+  ],
+  "presets": [
+{
+      "name": "Image with text banner",
+      "category": "Image",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,170 @@
+{% include 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
+{% comment %}
+The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'product-template' %}
+
+<script text="text/javascript">
+		var _learnq = _learnq || [];
+		var dataLayer = dataLayer || [];
+		
+		var item = {
+			Name: {{ product.title|json }},
+			ProductID: {{ product.id|json }},
+			Categories: {{ product.collections|map:'title'|json }},
+			ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+			URL: "{{ shop.secure_url }}{{ product.url }}",
+			Brand: {{ product.vendor|json }},
+			Price: {{ product.price|money|json }},
+			CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+		};
+		dataLayer.push({
+			'product_id': item.ProductID,
+			'product_name': item.Name,
+			'product_price':  {{product.price|money|json|remove: '$'}},
+			'product_category': item.Categories[0],
+			'cart_qty': fb_product_qty
+		});
+
+		_learnq.push(['track', 'Viewed Product', item]);
+		_learnq.push(['trackViewedItem', {
+			Title: item.Name,
+			ItemId: item.ProductID,
+			Categories: item.Categories,
+			ImageUrl: item.ImageURL,
+			Url: item.URL,
+			Metadata: {
+				Brand: item.Brand,
+				Price: item.Price,
+				CompareAtPrice: item.CompareAtPrice
+			}
+		}]);
+</script>
+
+{{product.metafields.shogun.below}}
+
+<script>
+$(document).ready(function(){
+  $(".shogun-accordion-wrapper .shogun-accordion").click(function(){
+    //$(".shogun-accordion-wrapper .shogun-accordion").removeClass('shogun-accordion-active');
+    //$(".shogun-accordion-wrapper .shogun-accordion").find('.shogun-accordion-body').removeClass('shogun-accordion-active');
+    $(this).toggleClass('shogun-accordion-active');
+    $(this).find('.shogun-accordion-body').toggleClass('shogun-accordion-active');
+  });
+});
+</script>
+
+<style>
+  
+  .shogun-accordion-active{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .shogun-accordion-icon.shogun-icon-plus>span::after {
+    content: "＋";
+}
+  .shogun-accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .shogun-accordion-wrapper>.shogun-accordion {
+    border: 1px solid #ddd;
+  }
+  .shogun-accordion-wrapper .shogun-accordion {
+    margin-bottom: 0;
+    border-radius: 4px;
+  }
+  .shogun-accordion {
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .shogun-accordion-heading {
+    color: #333;
+    border-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: pointer;
+  }
+  .shogun-accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .shogun-accordion-wrapper>.shogun-accordion>.shogun-accordion-heading>.shogun-accordion-header>.shogun-accordion-title {
+    color: #fff;
+    text-align: left;
+    font-family: Open Sans;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .custom-template-product .description.bottom .shogun-accordion .shogun-accordion-heading h4 {
+    font-family: 'Roboto', sans-serif;
+    text-transform: none;
+    font-weight: 500 !important;
+  }
+  .shogun-accordion-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer;
+    text-decoration: none;
+    flex: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .shogun-accordion-wrapper>.shogun-accordion>.shogun-accordion-heading .shogun-accordion-icon {
+    font-size: 16px;
+  }
+  .shogun-accordion-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.2em;
+  }
+  .shogun-accordion-wrapper>.shogun-accordion>.shogun-accordion-heading>.shogun-accordion-header>.shogun-accordion-icon>span {
+    color: #fff;
+  }
+  .shogun-accordion.shogun-accordion-active>.shogun-accordion-heading .shogun-accordion-icon.shogun-icon-plus>span {
+    -webkit-transform: rotate(-225deg);
+    transform: rotate(-225deg);
+  }
+  .shogun-accordion-icon>span {
+    transition: 0.3s -webkit-transform;
+    transition: 0.3s transform;
+    transition: 0.3s transform, 0.3s -webkit-transform;
+    position: absolute;
+    right: 0;
+    font-size: 1.2em;
+  }
+  .shogun-accordion-wrapper>.shogun-accordion>.shogun-accordion-heading {
+    padding: 10px;
+  }
+  .shogun-accordion-wrapper .shogun-accordion{
+  }
+  .shogun-accordion-wrapper .shogun-accordion .shogun-accordion-body{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    padding: 10px
+  }
+  .shogun-accordion-wrapper .shogun-accordion .shogun-accordion-body.shogun-accordion-active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  .shogun-accordion-wrapper .shogun-accordion{
+  }
+  .shogun-accordion-wrapper .shogun-accordion{
+  }
+</style>

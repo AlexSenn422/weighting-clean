@@ -1,0 +1,198 @@
+{% include '__opt-js-theme-init' %}
+
+<script>console.log('__opt-js-theme-dev-1.0852');</script>
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ '__opt_ls.rias.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ '__opt_ls.rias.min.js' | asset_url }}"></script><![endif]-->
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ '__opt_ls.bgset.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ '__opt_ls.bgset.min.js' | asset_url }}"></script><![endif]-->
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ '__opt_lazysizes.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ '__opt_lazysizes.min.js' | asset_url }}"></script><![endif]-->
+
+<script>
+
+(function () {
+	if ( typeof window.CustomEvent === "function" ) return false; //If not IE
+
+	function CustomEvent ( event, params ) {
+		params = params || { bubbles: false, cancelable: false, detail: undefined };
+		var evt = document.createEvent( 'CustomEvent' );
+		evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+		return evt;
+	}
+
+	CustomEvent.prototype = window.Event.prototype;
+
+	window.CustomEvent = CustomEvent;
+})();
+
+var view_mode = false;
+var md = new MobileDetect(window.navigator.userAgent);
+
+if(md.mobile())
+{
+	view_mode = 'mobile';
+}
+else
+{
+	view_mode = 'desktop';
+}
+
+if(md.tablet())
+{
+	view_mode = 'desktop';
+}
+
+{%- if template.name == 'product' -%}
+			document.dispatchEvent(new CustomEvent('StartKernelLoading'));
+{%- endif -%}
+
+
+document.addEventListener("DOMContentLoaded", function(event) 
+{
+	setTimeout(function(){
+		document.dispatchEvent(new CustomEvent('EndNprogress'));
+		$("#__loader").remove();
+		{% comment %} $("#__preloader").css('opacity', 1); {% endcomment %}
+		$("#__preloader").fadeTo( "slow", 1 );
+	}, 450);
+
+	if(view_mode == 'mobile')
+	{
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartScriptsLoading'));
+		}, 400);
+
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartGtmLoading'));
+		}, 5000);
+
+		{%- unless template.name == 'product' -%}
+			setTimeout(function(){
+				document.dispatchEvent(new CustomEvent('StartKernelLoading'));
+			}, 1800);		
+		{%- endunless -%}		
+
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartTrekkieLoading'));
+		}, 3500);
+	}
+	else
+	{
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartScriptsLoading'));
+		}, 100);
+
+		{%- unless template.name == 'product' -%}
+			setTimeout(function(){
+				document.dispatchEvent(new CustomEvent('StartKernelLoading'));
+			}, 400);		
+		{%- endunless -%}			
+
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartTrekkieLoading'));
+		}, 2500);
+
+		setTimeout(function(){
+			document.dispatchEvent(new CustomEvent('StartGtmLoading'));
+		}, 6000);			
+
+	}
+
+	setTimeout(function(){
+		document.dispatchEvent(new CustomEvent('StartOtherLoading'));
+	}, 8000);	
+
+	setTimeout(function(){
+		document.dispatchEvent(new CustomEvent('StartAsyncLoading'));
+	}, 10500);
+});
+
+document.addEventListener("StartScriptsLoading", function(event)
+{
+	loadJS('{{ 'app.js' | asset_url }}', function()
+	{
+		document.dispatchEvent(new CustomEvent('StartScriptsLoaded'));
+	});
+});
+
+document.addEventListener("StartScriptsLoaded", function(event)
+{
+	{%- if template.name == 'index' -%}
+		$('#play-video').magnificPopup({
+			items: {
+				src: 'https://www.youtube.com/watch?v=NJRaKpnhZ7U'
+			},
+			type: 'iframe',
+			iframe: {
+				markup: '<div class="mfp-iframe-scaler">'+
+				'<div class="mfp-close"></div>'+
+				'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+				'</div>', 
+				patterns: {
+					youtube: {
+						index: 'youtube.com/', 
+						id: 'v=', 
+						src: '//www.youtube.com/embed/%id%?autoplay=1' 
+					}
+				},
+				srcAction: 'iframe_src', 
+			}
+		});		
+	{%- endif -%}
+
+});
+
+document.addEventListener("StartKernelLoading", function(event)
+{
+	$(".lazyload-ifame").addClass('lazyload');
+	loadJS('https://staticw2.yotpo.com/3ySTOUrDqICKTGd29z0EiHXj5BathwJNkGXaEhe6/widget.js');
+
+});
+
+document.addEventListener("StartOtherLoading", function(event)
+{
+	(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"15003569"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+
+	(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"26039988"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+
+	function GetRevenueValue() {
+		return '{{ cart.total_price | money_without_currency }}';
+	}
+
+	window.uetq = window.uetq || [];
+	window.uetq.push('event', 'purchase', {revenue_value: GetRevenueValue (), 'currency': 'USD'});
+});
+
+
+</script>
+
+
+{% if template contains 'customer' %}
+	{{ "shopify_common.js" | shopify_asset_url | script_tag }}
+	{{ "customer_area.js" | shopify_asset_url | script_tag }}
+{% endif %}
+
+{% if settings.show_multiple_currencies %}
+{% include 'currencies' %}
+{% endif %}
+
+{% if settings.show_shipping_calculator and template contains "cart" %}
+{% include 'cart-shipping-scripts' %}
+{% endif %}
+
+<script>
+	/* custom_scripts */
+  {{ settings.custom_scripts }}
+</script>
+
+<input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/><!-- Warning: Do not remove. This is used for CartHook Checkout Replacement -->
+
+{% include 'gts' %}
+
+
+
+
+

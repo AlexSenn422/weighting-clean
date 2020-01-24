@@ -1,0 +1,71 @@
+<div  id="accordion" class="footer-six panel-group">
+  <dl class="accordion">
+    <dt>
+      <a class="down-icon" href="">
+        <span class="plus">+</span><span class="minus">-</span> Description
+      </a>
+    </dt>
+    <dd>
+      <div id="description" class="tabcontent">
+        {{ description }}
+      </div>
+    </dd>
+    <dt>
+      <a class="down-icon" href="">
+        <span class="plus">+</span><span class="minus">-</span> ingredients
+      </a>
+    </dt>
+    <dd>
+      <div id="shipping" class="tabcontent">
+        {{ ingredients }}
+      </div>
+    </dd>
+    <dt><a class="down-icon" href="">
+      <span class="plus">+</span><span class="minus">-</span> reviews
+      </a>
+    </dt>
+    <dd>
+      <div id="REV" class="tabcontent">
+        {{ reviews }}
+      </div>
+    </dd>
+  </dl>
+</div>
+
+<script>
+
+  function openFirstPanel(){
+	$('.accordion > dt:first-child').next().addClass('active').slideDown();
+  }
+
+  (function($) {
+
+	var allPanels = $('.accordion > dd').hide();
+
+	//openFirstPanel();
+
+
+	$('.accordion > dt > a').click(function() {
+  	//alert(123);
+  	$this = $(this);
+  	$target =  $this.parent().next();
+
+
+  	$('.accordion > dt > a').removeClass('red');
+
+  	if($target.hasClass('active')){
+    	$target.removeClass('active').slideUp();
+    	$this.removeClass('red');
+  	}else{
+    	allPanels.removeClass('active').slideUp();
+    	$target.addClass('active').slideDown(); 	 
+    	$this.addClass('red');
+  	}
+
+  	return false;
+	});
+
+  })(jQuery);
+
+</script>
+

@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/weighting-comforts.myshopify.com/products/configure/68410/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["google_shopping_product_title"] != blank %}
+  <div class="custom-field custom-field__google-shopping-product-title custom-field__type--text">
+    <h3 class="custom-field--title">Google Shopping Product Title</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["google_shopping_product_title"] }}
+    </div>
+  </div>
+{% endif %}
